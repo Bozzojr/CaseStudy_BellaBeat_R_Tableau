@@ -133,6 +133,7 @@ Lets define each of our daily data tables first.
 **Description:** Tracks sleep records, total minutes asleep, and total time in bed for each user.
 ##### Daily Weight Log Data
 **Variables:** Id, Date, WeightKg, WeightPounds, Fat, BMI, IsManualReport, LogId, DayofWeek
+
 **Description:** Contains user weight logs including body fat percentage and BMI
 ##### Daily Activity Data
 **Variables:**  Id, ActivityDate, TotalSteps, TotalDistance, various distances, activity minutes, SedentaryMinutes, Calories, DayofWeek

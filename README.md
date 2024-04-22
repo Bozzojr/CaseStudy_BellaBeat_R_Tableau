@@ -17,13 +17,13 @@ Bellabeat has experienced success as a small company, and is looking to grow and
   4) **Spring:** Water bottle that tracks daily water intakeand provides info on hydration levels
 
 
-### Key Questions
-# Here are the key questions we will be considering
+## Key Questions
+### Here are the key questions we will be considering
   1) What are some trends in smart device usage?
   2) Houw could these trends apply to Bellabeat customers?
   3) How could these trends help influence Bellabeat marketing strategy?
 
-# Stakeholders to consider when answering these questions
+### Stakeholders to consider when answering these questions
   1) **Urska Srsen:** Bellabeat's cofounder and Chief Creative Officer
   2) **Sando Mur:** Mathematician and Bellabeat's cofounder; key member of the Bellabeat executive team
   3) **Bellabeat marketing analytics team** 

@@ -230,5 +230,5 @@ activity_summary %>% select(ActivityType, Label)
 
 
 
-![ActivityLevelGraph](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/6244c75c-a418-418e-a874-7fc82afce578)
+![ActivityLevelGraph](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/31fd680a-06e6-4111-b468-6015094009c5)
 ![ActivityLevelPrint](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/36a7b8dc-d7bb-4900-a8f9-246df7df4c3a)

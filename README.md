@@ -48,7 +48,7 @@ Analyze smart device usage data, focusing particularly on one of Bellabeat’s p
 
 ## Data Preparation
 ### Daily Data
-##### First, load the data, transform, and combine where necessary. 
+#### First, load the data, transform, and combine where necessary. 
 ```
 daily_activity_1 <- read.csv("~/fitness_data/dailyActivity_merged_1.csv")
 daily_activity_1$ActivityDate <- as.Date(daily_activity_1$ActivityDate, format = "%m/%d/%Y")
@@ -73,7 +73,7 @@ weightLog_2$Date <- as.Date(weightLog_2$Date, format = "%m/%d/%Y")
 weightLog_2$IsManualReport <- as.logical(weightLog_2$IsManualReport)
 weightLog_merged <- bind_rows(weightLog_1, weightLog_2)
 ```
-##### Check for duplicates in data
+#### Check for duplicates in data
 ```
 sum(duplicated(daily_activity_merged))
 sum(duplicated(daily_calories))
@@ -93,7 +93,7 @@ daily_calories_cleaned <- daily_calories
 daily_intensities_cleaned <- daily_intensities
 daily_steps_cleaned <- daily_steps
 ```
-##### Combine tables where possible with full joins
+#### Combine tables where possible with full joins
 ```
 daily_calories_intensity <- merge(daily_calories_cleaned, 
                                   daily_intensities_cleaned,
@@ -107,14 +107,14 @@ rm(daily_calories_intensity)
 rm(daily_steps_cleaned)
 ```
 We removed the tables that we merged and checked the new table for duplicates
-##### Add a day of week column for tables for analysis
+#### Add a day of week column for tables for analysis
 ```
 daily_activity_cleaned$DayofWeek <- weekdays(daily_activity_cleaned$ActivityDate)
 daily_combined$DayofWeek <- weekdays(daily_combined$ActivityDay)
 daily_sleep_cleaned$DayofWeek <- weekdays(daily_sleep_cleaned$SleepDay)
 daily_weightLog_cleaned$DayofWeek <- weekdays(daily_weightLog_cleaned$Date)
 ```
-##### Check data for N/A values
+#### Check data for N/A values
 ```
 sum(is.na(daily_activity_cleaned))
 sum(is.na(daily_combined))
@@ -124,23 +124,26 @@ sum(is.na(daily_weightLog_cleaned))
 Weight log has 94 NA entries for "Fat" column because data was unrecorded, we will leave it in for now
 
 **Now that the data is prepared, we can start to analyzing it and creating visuals**
+
 Lets define each of our daily data tables first. 
-##### Daily Combined Data
+#### Daily Combined Data
 **Variables:** Id, ActivityDay, Calories, various activity minutes, distances, StepTotal, DayofWeek
+
 **Description:** Records daily total steps, various activity levels, distances traveled, and calories burned
-##### Daily Sleep Data
+#### Daily Sleep Data
 **Variables:** Id, SleepDay, TotalSleepRecords, TotalMinutesAsleep, TotalTimeInBed, DayofWeek.
+
 **Description:** Tracks sleep records, total minutes asleep, and total time in bed for each user.
-##### Daily Weight Log Data
+#### Daily Weight Log Data
 **Variables:** Id, Date, WeightKg, WeightPounds, Fat, BMI, IsManualReport, LogId, DayofWeek
 
 **Description:** Contains user weight logs including body fat percentage and BMI
-##### Daily Activity Data
+#### Daily Activity Data
 **Variables:**  Id, ActivityDate, TotalSteps, TotalDistance, various distances, activity minutes, SedentaryMinutes, Calories, DayofWeek
 **Description:** Details of daily activities including steps, distances, active minutes, and calories
 
 ### Data Integrity and Descriptive Statistics
-##### Check for number of unique users in tables
+#### Check for number of unique users in tables
 ```
 n_unique(daily_activity_cleaned$Id) # 35 unique users
 n_unique(daily_combined$Id) # 33 unique users
@@ -148,7 +151,7 @@ n_unique(daily_sleep_cleaned$Id) # 24 unique users
 n_unique(daily_weightLog_cleaned$Id) # 13 unique users
 ```
 Weight log has 13 unique users, so it will be hard to draw conclusions off that small of a sample size, the others are close enough or over 30 users, which is our threshold. 
-##### Summary statistics
+#### Summary statistics
 ```
 summary(daily_combined)
 summary(daily_activity_cleaned)

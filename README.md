@@ -164,6 +164,7 @@ summary(daily_weightLog_cleaned)
 
 #### 1) Daily Combined
 **Calories** burned range from 0 to 4900 with an average of approximately 2304 per day
+
 Average **Steps** per day are about 7638, with a significant range (0 to 36019)
 #### 2) Daily Activity
 

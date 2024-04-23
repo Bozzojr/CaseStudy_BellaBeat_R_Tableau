@@ -201,5 +201,34 @@ ggplot(daily_sleep_cleaned, aes(x = TotalMinutesAsleep)) +
 
 ![DistributionOfSleep](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/51938a7d-f04d-45c8-864e-3d333247b7bb)
 
+### Proportion of Activity Levels
+```
+# Reshape the data from wide to long format
+activity_long <- pivot_longer(daily_activity_cleaned, cols = c(VeryActiveMinutes, FairlyActiveMinutes, LightlyActiveMinutes, SedentaryMinutes),
+                              names_to = "ActivityType", values_to = "Minutes")
+
+# Calculate the total minutes for each activity type to get proportions
+activity_summary <- activity_long %>%
+  group_by(ActivityType) %>%
+  summarize(TotalMinutes = sum(Minutes)) %>%
+  ungroup() %>%
+  mutate(Proportion = TotalMinutes / sum(TotalMinutes),
+         Label = percent(Proportion))
+
+# Create the pie chart
+ggplot(activity_summary, aes(x = "", y = Proportion, fill = ActivityType)) +
+  geom_bar(width = 1, stat = "identity", show.legend = FALSE) +
+  coord_polar("y", start = 0) +  # Transform the bar chart into a pie chart
+  scale_fill_brewer(palette = "Pastel1", labels = activity_summary$Label) + # Apply a color palette and add labels to legend
+  labs(title = "Proportion of Activity Minutes", fill = "Activity Type") +
+  theme_void()  # Removes the background grid and labels
+
+# Print the activity type and the corresponding percentage
+activity_summary %>% select(ActivityType, Label)
+```
 
 
+
+
+![PropOfActivityLevel](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/d48967ab-ff96-4937-8ad9-1b5023550bdd)
+![ActivityLevelPrint](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/36a7b8dc-d7bb-4900-a8f9-246df7df4c3a)

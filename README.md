@@ -6,7 +6,7 @@ Final project for the Google Data Analytics Professional Certificate. Case study
 
 
 ## Scenario
-Bellabeat has experienced success as a small company, and is looking to grow and hold a significan piece of the pie in the global smart device market. Creative Chief Officer, Urska Srsen, is looking to unlock new growth opportunities in this market by analyzing fitness data from smart devices. This analysis will focus on one of Bellabeat's products of our choosing. We will use publicly available data to gain insights on how customers use their smart devices in areas related to health. Using these insights, we will help develop high level recommendations for our marketing team 
+Bellabeat has experienced success as a small company, and is looking to grow and hold a significant piece of the pie in the global smart device market. Creative Chief Officer, Urska Srsen, is looking to unlock new growth opportunities in this market by analyzing fitness data from smart devices. This analysis will focus on one of Bellabeat's products of our choosing. We will use publicly available data to gain insights on how customers use their smart devices in areas related to health. Using these insights, we will help develop high level recommendations for our marketing team 
 
 ## Business Task
 ### Background

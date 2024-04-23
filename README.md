@@ -140,6 +140,7 @@ Lets define each of our daily data tables first.
 **Description:** Contains user weight logs including body fat percentage and BMI
 #### Daily Activity Data
 **Variables:**  Id, ActivityDate, TotalSteps, TotalDistance, various distances, activity minutes, SedentaryMinutes, Calories, DayofWeek
+
 **Description:** Details of daily activities including steps, distances, active minutes, and calories
 
 ### Data Integrity and Descriptive Statistics

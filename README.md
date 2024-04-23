@@ -143,7 +143,7 @@ Lets define each of our daily data tables first.
 
 **Description:** Details of daily activities including steps, distances, active minutes, and calories
 
-### Data Integrity and Descriptive Statistics
+## Data Integrity and Descriptive Statistics
 #### Check for number of unique users in tables
 ```
 n_unique(daily_activity_cleaned$Id) # 35 unique users
@@ -152,7 +152,7 @@ n_unique(daily_sleep_cleaned$Id) # 24 unique users
 n_unique(daily_weightLog_cleaned$Id) # 13 unique users
 ```
 Weight log has 13 unique users, so it will be hard to draw conclusions off that small of a sample size, the others are close enough or over 30 users, which is our threshold. 
-#### Summary statistics
+### Summary statistics
 ```
 summary(daily_combined)
 summary(daily_activity_cleaned)
@@ -167,12 +167,39 @@ summary(daily_weightLog_cleaned)
 
 Average **Steps** per day are about 7638, with a significant range (0 to 36019)
 #### 2) Daily Activity
+Average **Steps** per day are about 7281, similar to daily combined with matching range
 
+**Very Active Minutes** average about 20 minutes per day
+#### 3) Daily Sleep
+Users **sleep on average** 419 minutes per night (about 7 hours), with a range of 58 to 796  
 
+**Total Time in Bed** is at 548 minutes typically, suggesting users spend on average 39 minutes in bed awake
+#### 4) Daily Weight
+**Weight Lb:** Average weight is about 138 lb , ranging from 116 to 294. 
 
+**BMI** average is around 25, indicating a mix of healthy and overweight indiviudals
 
+#### Correlations
+```
+cor(daily_activity_cleaned$TotalSteps, daily_activity_cleaned$Calories) # = 0.5901599
+cor(daily_activity_cleaned$SedentaryMinutes, daily_activity_cleaned$Calories) # = -0.06192441
+cor(daily_activity_cleaned$VeryActiveMinutes, daily_activity_cleaned$Calories) # = 0.5820275
+cor(daily_activity_cleaned$VeryActiveMinutes, daily_activity_cleaned$TotalSteps)
+```
+**Activity Correlations:** 
+There is a strong positive correlation between total steps and calories burned (r = 0.59), which is expected as more activity should lead to higher energy expenditure. Also, very active minutes correlate strongly with both total steps (r = 0.68) and calories burned (r = 0.58).
 
+## Data Viz
+```
+ggplot(daily_sleep_cleaned, aes(x = TotalMinutesAsleep)) + 
+  geom_histogram(binwidth = 10, fill = "skyblue", color = "black") +
+  ggtitle("Distribution of Total Minutes Asleep") +
+  xlab("Total Minutes Asleep") +
+  ylab("Frequency") +
+  theme_minimal()
+```
 
+![DistributionOfSleep](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/51938a7d-f04d-45c8-864e-3d333247b7bb)
 
 
 

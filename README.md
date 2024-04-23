@@ -219,7 +219,7 @@ activity_summary <- activity_long %>%
 ggplot(activity_summary, aes(x = "", y = Proportion, fill = ActivityType)) +
   geom_bar(width = 1, stat = "identity", show.legend = FALSE) +
   coord_polar("y", start = 0) +  # Transform the bar chart into a pie chart
-  scale_fill_brewer(palette = "Pastel1", labels = activity_summary$Label) + # Apply a color palette and add labels to legend
+  scale_fill_brewer(palette = "Pastel1") + # Apply a color palette and add labels to legend
   labs(title = "Proportion of Activity Minutes", fill = "Activity Type") +
   theme_void()  # Removes the background grid and labels
 

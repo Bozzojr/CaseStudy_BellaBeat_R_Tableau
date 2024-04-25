@@ -126,19 +126,20 @@ Weight log has 94 NA entries for "Fat" column because data was unrecorded, we wi
 **Now that the data is prepared, we can start to analyzing it and creating visuals**
 
 Lets define each of our daily data tables first. 
-#### Daily Combined Data
+## Data Definition
+### Daily Combined Data
 **Variables:** Id, ActivityDay, Calories, various activity minutes, distances, StepTotal, DayofWeek
 
 **Description:** Records daily total steps, various activity levels, distances traveled, and calories burned
-#### Daily Sleep Data
+### Daily Sleep Data
 **Variables:** Id, SleepDay, TotalSleepRecords, TotalMinutesAsleep, TotalTimeInBed, DayofWeek.
 
 **Description:** Tracks sleep records, total minutes asleep, and total time in bed for each user.
-#### Daily Weight Log Data
+### Daily Weight Log Data
 **Variables:** Id, Date, WeightKg, WeightPounds, Fat, BMI, IsManualReport, LogId, DayofWeek
 
 **Description:** Contains user weight logs including body fat percentage and BMI
-#### Daily Activity Data
+### Daily Activity Data
 **Variables:**  Id, ActivityDate, TotalSteps, TotalDistance, various distances, activity minutes, SedentaryMinutes, Calories, DayofWeek
 
 **Description:** Details of daily activities including steps, distances, active minutes, and calories
@@ -190,6 +191,7 @@ cor(daily_activity_cleaned$VeryActiveMinutes, daily_activity_cleaned$TotalSteps)
 There is a strong positive correlation between total steps and calories burned (r = 0.59), which is expected as more activity should lead to higher energy expenditure. Also, very active minutes correlate strongly with both total steps (r = 0.68) and calories burned (r = 0.58).
 
 ## Data Viz
+### Distribution of Sleep Time
 ```
 ggplot(daily_sleep_cleaned, aes(x = TotalMinutesAsleep)) + 
   geom_histogram(binwidth = 10, fill = "skyblue", color = "black") +
@@ -221,14 +223,43 @@ ggplot(activity_summary, aes(x = "", y = Proportion, fill = ActivityType)) +
   coord_polar("y", start = 0) +  # Transform the bar chart into a pie chart
   scale_fill_brewer(palette = "Pastel1") + # Apply a color palette and add labels to legend
   labs(title = "Proportion of Activity Minutes", fill = "Activity Type") +
-  theme_void()  # Removes the background grid and labels
+  theme_void()  
 
 # Print the activity type and the corresponding percentage
 activity_summary %>% select(ActivityType, Label)
 ```
-
-
-
-
 ![ActivityLevelGraph](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/31fd680a-06e6-4111-b468-6015094009c5)
 ![ActivityLevelPrint](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/36a7b8dc-d7bb-4900-a8f9-246df7df4c3a)
+
+## Sleep and Steps by Day of Week
+```
+# Set week order as variable to Order Graphs
+WeekOrder <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+               "Friday", "Saturday")
+
+# Create Tables for Average Sleep and Steps by Day of Week
+dow_AverageSteps <- daily_combined %>% 
+  group_by(DayofWeek) %>% 
+  summarise(AverageSteps = mean(StepTotal))
+
+dow_AverageSleep <- daily_sleep_cleaned %>% 
+  group_by(DayofWeek) %>% 
+  summarise(AverageSleep = mean(TotalMinutesAsleep))
+
+# Make Bar graph
+ggplot(dow_AverageSleep, aes(
+  x = factor(DayofWeek, levels = WeekOrder), y = AverageSleep)) + 
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(x = "Day of the Week", y = "Average Minutes Asleep", 
+       title = "Average Sleep Time by Day of the Week") +
+  theme_minimal()
+
+ggplot(dow_AverageSteps, aes(
+  x = factor(DayofWeek, levels = WeekOrder), y = AverageSteps)) + 
+  geom_bar(stat = "identity", fill = "salmon") +
+  labs(x = "Day of the Week", y = "Average Steps", 
+       title = "Average Steps by Day of the Week") +
+  theme_minimal()
+```
+![dow_AverageSleepGraphic](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/549eec05-c2ab-4adf-9a4b-dbc409ae9109)
+![dow_AverageStepsGraphic](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/bf270b25-ed44-4fe1-833a-e1c90acf32f5)

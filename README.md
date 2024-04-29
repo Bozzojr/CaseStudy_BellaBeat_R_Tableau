@@ -185,10 +185,29 @@ Users **sleep on average** 419 minutes per night (about 7 hours), with a range o
 cor(daily_activity_cleaned$TotalSteps, daily_activity_cleaned$Calories) # = 0.5901599
 cor(daily_activity_cleaned$SedentaryMinutes, daily_activity_cleaned$Calories) # = -0.06192441
 cor(daily_activity_cleaned$VeryActiveMinutes, daily_activity_cleaned$Calories) # = 0.5820275
-cor(daily_activity_cleaned$VeryActiveMinutes, daily_activity_cleaned$TotalSteps)
+cor(daily_activity_cleaned$VeryActiveMinutes, daily_activity_cleaned$TotalSteps) # = 0.6765583
 ```
 **Activity Correlations:** 
 There is a strong positive correlation between total steps and calories burned (r = 0.59), which is expected as more activity should lead to higher energy expenditure. Also, very active minutes correlate strongly with both total steps (r = 0.68) and calories burned (r = 0.58).
+
+**Sleep vs Calories Burned:** 
+If users burn more calories in a day, will they get better sleep at night? Intuition would assume yes, because we are expending more energy, we would think that we would be more tired and, as a result, sleep more. Lets see if the numbers back this theory.
+```
+user_averageSleepTime <- daily_sleep_cleaned %>% 
+  group_by(Id) %>% 
+  summarise(avg_sleepTime = mean(TotalMinutesAsleep)) %>% 
+  arrange(avg_sleepTime)
+
+user_averageCalBurn <- daily_activity_cleaned %>% 
+  group_by(Id) %>% 
+  summarise(avg_calBurn = mean(Calories))
+
+
+sleepTime_vs_calBurn <- merge(user_averageSleepTime, user_averageCalBurn,
+                              by = "Id", all.x = TRUE)
+cor(sleepTime_vs_calBurn$avg_sleepTime, sleepTime_vs_calBurn$avg_calBurn) # = -0.05078034
+```
+Contrary to our hypothesis, there is almost no correlation between the amount of calories and user burns during the day vs the amount of sleep they get at night!
 
 ## Data Viz
 ### Distribution of Sleep Time
@@ -202,6 +221,8 @@ ggplot(daily_sleep_cleaned, aes(x = TotalMinutesAsleep)) +
 ```
 
 ![DistributionOfSleep](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/51938a7d-f04d-45c8-864e-3d333247b7bb)
+
+Our distribution shows a normal bell curve, increasing our confidence in the validity of the sample data taken for sleep. 
 
 ### Proportion of Activity Levels
 ```

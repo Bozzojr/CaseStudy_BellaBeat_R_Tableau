@@ -5,21 +5,21 @@ Final project for the Google Data Analytics Professional Certificate. Case study
 
 
 
-## Scenario
-Bellabeat has experienced success as a small company, and is looking to grow and hold a significant piece of the pie in the global smart device market. Creative Chief Officer, Urska Srsen, is looking to unlock new growth opportunities in this market by analyzing fitness data from smart devices. This analysis will focus on one of Bellabeat's products of our choosing. We will use publicly available data to gain insights on how customers use their smart devices in areas related to health. Using these insights, we will help develop high level recommendations for our marketing team 
+## Introduction
+As a thriving small company, Bellabeat is poised to expand its footprint in the global smart device market. Under the guidance of Chief Creative Officer, Urska Srsen, this analysis will leverage publicly available smart device data to uncover insights that will inform strategic marketing decisions for one of Bellabeat’s products.
 
 ## Business Task
 ### Background
-Bellabeat, a high-tech company that manufactures health-focused smart products for women, is looking to expand its market presence and enhance its marketing strategies. The company offers a range of products designed to help women track their health and wellness data, including activity, sleep, stress, and hydration.
+Bellabeat manufactures health-focused smart products for women, aimed at helping them track various wellness metrics such as activity, sleep, stress, and hydration.
 
 ### Objective
-The primary objective of this analysis is to leverage smart device usage data to gain insights into consumer behavior and preferences. By understanding how users interact with their smart devices, particularly those related to health and wellness tracking, Bellabeat aims to uncover patterns and trends that can inform strategic marketing decisions.
+The goal is to utilize smart device usage data to identify consumer behavior and preferences, providing insights into how users interact with their devices in relation to their health and wellness.
 
 ### Task
 Analyze smart device usage data, focusing particularly on one of Bellabeat’s products. The analysis should uncover how consumers use their smart devices in their daily lives and how these usage patterns might influence Bellabeat’s marketing strategies. Key aspects to focus on include:
   1) Trends in smart device usage.
-  2) Relationships between smart device data (like steps, sleep quality, and activity levels) and personal wellness.
-  3) Insights that could potentially help tailor Bellabeat’s product offerings or marketing messages to better meet consumer needs.
+  2) Relationships between smart device data and personal wellness.
+  3) Insights to tailor Bellabeat’s marketing strategies and product offerings.
 
 ### Company Products
   1) **Bellabeat App:** Provides users with health-related data that includes infromation about their activity levels, sleep, stress, menstrual cycle, and mindfulness habits. Connects to Bellabeat's line of smart wellness products
@@ -30,7 +30,7 @@ Analyze smart device usage data, focusing particularly on one of Bellabeat’s p
 
 ## Key Questions
 ### Here are the key questions we will be considering
-  1) What are some trends in smart device usage?
+  1) What are the prevalent trends in smart device usage?
   2) Houw could these trends apply to Bellabeat customers?
   3) How could these trends help influence Bellabeat marketing strategy?
 
@@ -222,7 +222,7 @@ ggplot(daily_sleep_cleaned, aes(x = TotalMinutesAsleep)) +
 
 ![DistributionOfSleep](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/51938a7d-f04d-45c8-864e-3d333247b7bb)
 
-Our distribution shows a normal bell curve, increasing our confidence in the validity of the sample data taken for sleep. 
+Our distribution shows a normal bell curve, increasing our confidence in the validity of the sample data taken for sleep. The peak of the curve sits right below 450 minutes of sleep per night..
 
 ### Proportion of Activity Levels
 ```
@@ -251,6 +251,8 @@ activity_summary %>% select(ActivityType, Label)
 ```
 ![ActivityLevelGraph](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/31fd680a-06e6-4111-b468-6015094009c5)
 ![ActivityLevelPrint](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/36a7b8dc-d7bb-4900-a8f9-246df7df4c3a)
+
+Over 80% of our time is spent Sedentary! Identifying the days where we are least active could help us choose when to engage with our customers to promote a healthy lifestyle.
 
 ## Sleep and Steps by Day of Week
 ```
@@ -284,3 +286,21 @@ ggplot(dow_AverageSteps, aes(
 ```
 ![dow_AverageSleepGraphic](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/549eec05-c2ab-4adf-9a4b-dbc409ae9109)
 ![dow_AverageStepsGraphic](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/bf270b25-ed44-4fe1-833a-e1c90acf32f5)
+
+Users tend to be most active on Tuesdays and Saturday. Indicating higher app engagement on these days. Sunday is the day where users sleep the most, and take the least steps. 
+
+## Correlation Between Activity Level and Calories Burned
+Earlier we calculated a 0.58 correlation between our time spent being Very Active, and the amount of calories we burned. Lets visualize this: 
+```
+ggplot(daily_activity_cleaned, aes(x = VeryActiveMinutes, y = Calories)) +
+  geom_point(aes(color = VeryActiveMinutes), alpha = 0.6) +  
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +  
+  labs(title = "Correlation between Very Active Minutes and Calories Burned",
+       x = "Very Active Minutes",
+       y = "Calories Burned") +
+  theme_minimal() +
+  scale_color_gradient(low = "yellow", high = "red")  
+```
+![VeryActivevsCalories](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/6cf4ac81-a1f3-494e-83f3-95732a2532c3)
+
+Encouraging our users to spend just a small part of their day being Very Active, could result in huge benefits for their health and weight loss goals!

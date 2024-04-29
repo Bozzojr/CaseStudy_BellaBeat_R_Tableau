@@ -3,7 +3,7 @@
 Final project for the Google Data Analytics Professional Certificate. Case study for BellaBeat fitness company
 ##### Date: April 9th, 2024
 
-
+##### [Tableau Dashboard](https://public.tableau.com/views/BellaBeatFitnessDashboard/Dashboard1?:language=en-US&publish=yes&:sid=&:display_count=n&:origin=viz_share_link)
 
 ## Introduction
 As a thriving small company, Bellabeat is poised to expand its footprint in the global smart device market. Under the guidance of Chief Creative Officer, Urska Srsen, this analysis will leverage publicly available smart device data to uncover insights that will inform strategic marketing decisions for one of Bellabeat’s products.
@@ -43,8 +43,8 @@ Analyze smart device usage data, focusing particularly on one of Bellabeat’s p
   1) Summary of business task
   2) Description of all data sources used
   3) Documentation of any cleaning or manipulation of data
-  4) Summary of Analysis
-  5) Supporting Visualizations and key findings
+  4) Supporting Visualizations and key findings
+  5) Recommendations for Bellabeat Marketing Team
 
 ## Data Preparation
 ### Daily Data
@@ -303,4 +303,18 @@ ggplot(daily_activity_cleaned, aes(x = VeryActiveMinutes, y = Calories)) +
 ```
 ![VeryActivevsCalories](https://github.com/Bozzojr/Google_Analytics_Capstone_BellaBeat/assets/123130175/6cf4ac81-a1f3-494e-83f3-95732a2532c3)
 
-Encouraging our users to spend just a small part of their day being Very Active, could result in huge benefits for their health and weight loss goals!
+Encouraging our users to spend just a small part of their day being very active, could result in huge benefits for their health and weight loss goals!
+
+## Key Findings and Recommendations
+  1) **Focus on Activity Encouragement**
+      - Highlight Benefits of Increased Activity: The data shows a strong positive correlation between activity levels (specifically Very Active Minutes) and calories burned. Marketing should focus on campaigns that highlight the benefits of increased activity, such as improved fitness and weight management, using real user data as evidence.
+      - Promote Active Wearables: Given the significant correlation between very active minutes and calorie expenditure, Bellabeat can promote products like the Leaf and Time that encourage more active lifestyles. Campaigns could showcase how easily these devices integrate into various types of activities (e.g., yoga, running, cycling)
+  2) **Tailored Daily Goals**
+      - Personalized Notifications: Use data insights to push personalized notifications to users encouraging them to move or complete their daily activity goals, especially during their least active periods, which we identified on average to be Sunday.
+      - Activity Challenges: Develop weekly challenges or competitions among users to encourage more consistent activity levels throughout the week, addressing the observed variability in daily step counts.
+  3) **Weekday and Weekend Targeting**
+      - Optimize Engagement Strategies: Utilize the data showing different activity levels and sleep patterns across the week. For example, encourage activity on Sundays when step counts are lowest and promote relaxation and wellness activities on Saturdays when users are more active.
+      - Special Promotions: Offer weekend promotions or special features accessible through the app to encourage higher engagement when users are most active (Tuesdays and Saturdays).
+  4) **Wellness Tracking and Data Driven Personalization**
+      - Integrate Wellness Tips: Offer integrated wellness tips within the app based on user activity levels, sleep patterns, and movement data, helping users to see Bellabeat as a holistic health partner
+      - Enhanced User Profiles: Use the extensive data to create more detailed user profiles that can be used to tailor suggestions and notifications. For example, if a user tends to be sedentary, provide prompts and encouragement specific to their patterns.

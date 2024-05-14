@@ -1,4 +1,4 @@
-# Google_Analytics_Capstone_BellaBeat
+# CaseStudy_BellaBeat_R_Tableau
 ##### Author: Mark Bozzo
 Final project for the Google Data Analytics Professional Certificate. Case study for BellaBeat fitness company
 ##### Date: April 9th, 2024

@@ -5,11 +5,11 @@ Final project for the Google Data Analytics Professional Certificate. Case study
 
 ##### [Tableau Dashboard](https://public.tableau.com/views/BellaBeatFitnessDashboard/Dashboard1?:language=en-US&publish=yes&:sid=&:display_count=n&:origin=viz_share_link)
 #
-### ℹ️ Intro(#introduction)
-### 📁 Data Prep(#data-preparation)
-### 📈 Statistical Analysis(#data-integrity-and-descriptive-statistics)
-### 📊 Data Viz(#data-viz)
-### 🔎 Key Findings(#key-findings-and-recommendations)
+### ℹ️ [Intro](#introduction)
+### 📁 [Data Prep](#data-preparation)
+### 📈 [Statistical Analysis](#data-integrity-and-descriptive-statistics)
+### 📊 [Data Viz](#data-viz)
+### 🔎 [Key Findings](#key-findings-and-recommendations)
 
 ## Introduction
 As a thriving small company, Bellabeat is poised to expand its footprint in the global smart device market. Under the guidance of Chief Creative Officer, Urska Srsen, this analysis will leverage publicly available smart device data to uncover insights that will inform strategic marketing decisions for one of Bellabeat’s products.
